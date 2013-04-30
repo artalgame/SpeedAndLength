@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/TitleMainActivityTextView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/titleMainTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/gpsButton"
+        android:layout_toLeftOf="@+id/gpsButton"
+        android:layout_toRightOf="@+id/settingsButton"
+        android:height="@dimen/activity_vertical_margin"
+        android:text="@string/app_name"
+        android:textSize="@dimen/activity_horizontal_margin" />
+
+    <Button
+        android:id="@+id/gpsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="GSP" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/gpsButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Settings" />
+
+    <TextView
+        android:id="@+id/currentSpeedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/settingsButton"
+        android:layout_below="@+id/settingsButton"
+        android:layout_marginTop="42dp"
+        android:layout_toLeftOf="@+id/titleMainTextView"
+        android:text="Current Speed" />
+
+    <TextView
+        android:id="@+id/currentDistanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currentSpeedTextView"
+        android:layout_below="@+id/currentSpeedMeasureButton"
+        android:layout_marginTop="16dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/currentSpeedMeasureButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/currentSpeedTextView"
+        android:layout_toRightOf="@+id/titleMainTextView"
+        android:text="Km\H" />
+
+    <Button
+        android:id="@+id/currentDistanceMeasureButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currentSpeedMeasureButton"
+        android:layout_alignTop="@+id/currentDistanceTextView"
+        android:text="Button" />
+
+    <DigitalClock
+        android:id="@+id/currentTimeDigitalClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="34dp"
+        android:layout_toRightOf="@+id/currentDistanceTextView"
+        android:text="DigitalClock" />
+
+    <TextView
+        android:id="@+id/graphicTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/currentTimeDigitalClock"
+        android:layout_marginTop="29dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
