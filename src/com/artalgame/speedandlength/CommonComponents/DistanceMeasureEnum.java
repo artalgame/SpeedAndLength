@@ -1,6 +1,6 @@
 package com.artalgame.speedandlength.CommonComponents;
 
-public enum DistanceMeasureEnum {
+public enum DistanceMeasureEnum implements ISettingsExListData {
 	FIRST(0, "km"),
 	SECOND(1, "m");
 
@@ -10,4 +10,10 @@ public enum DistanceMeasureEnum {
 		this.code = code;
 		this.value = value;
 	}
+	@Override
+	public String getStringValue() {
+
+		return value;
+	}
+	
 }

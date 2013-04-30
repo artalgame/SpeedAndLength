@@ -1,6 +1,6 @@
 package com.artalgame.speedandlength.CommonComponents;
 
-public enum DataFrequencyUpdateEnum {
+public enum DataFrequencyUpdateEnum implements ISettingsExListData {
 	FIRST(10),
 	SECOND(100),
 	THIRD(500),

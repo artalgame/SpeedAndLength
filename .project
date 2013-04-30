@@ -30,4 +30,14 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>HOME</name>
+			<value>file:/F:/Program%20Files%20(x86)/Android/android-sdk/platform-tools</value>
+		</variable>
+		<variable>
+			<name>SDKHOME</name>
+			<value>file:/F:/Program%20Files%20(x86)/Android/android-sdk/platforms</value>
+		</variable>
+	</variableList>
 </projectDescription>

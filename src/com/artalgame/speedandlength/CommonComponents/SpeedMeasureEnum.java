@@ -1,6 +1,6 @@
 package com.artalgame.speedandlength.CommonComponents;
 
-public enum SpeedMeasureEnum {
+public enum SpeedMeasureEnum implements ISettingsExListData {
 	FIRST(0, "km/h"),
 	SECOND(1, "m/s");
 
@@ -10,4 +10,10 @@ public enum SpeedMeasureEnum {
 		this.code = code;
 		this.value = value;
 	}
+	@Override
+	public String getStringValue() {
+		return value;
+	}
+	
+	
 }

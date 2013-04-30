@@ -61,10 +61,14 @@ public class SALSettings {
 		editor.commit();
 	}
 	
+	public void cancellNewSettings(){
+		loadSettings();
+	}
+	
 	private void loadSettings(){
-		setSpeedMeasure(sharedPreferences.getString(SALSettings.speedMeasureSettingName, "km/h"));
-		setDistanceMeasure(sharedPreferences.getString(SALSettings.distanceMeasureSettingName, "km"));
-		setDataUpdateFrequency(sharedPreferences.getString(SALSettings.dataUpdateFrequencySettingName, "1000"));
-		setChatUpdateFrequency(sharedPreferences.getString(SALSettings.chatUpdateFrequencySettingName, "5000"));
+		setSpeedMeasure(sharedPreferences.getString(SALSettings.speedMeasureSettingName, SpeedMeasureEnum.SECOND.getStringValue()));
+		setDistanceMeasure(sharedPreferences.getString(SALSettings.distanceMeasureSettingName, DistanceMeasureEnum.SECOND.getStringValue()));
+		setDataUpdateFrequency(sharedPreferences.getString(SALSettings.dataUpdateFrequencySettingName, DataFrequencyUpdateEnum.THIRD.getStringValue()));
+		setChatUpdateFrequency(sharedPreferences.getString(SALSettings.chatUpdateFrequencySettingName, ChatFrequencyUpdateEnum.THIRD.getStringValue()));
 	}
 }

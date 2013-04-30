@@ -1,6 +1,6 @@
 package com.artalgame.speedandlength.CommonComponents;
 
-public enum ChatFrequencyUpdateEnum {	
+public enum ChatFrequencyUpdateEnum implements ISettingsExListData{	
 	FIRST(10),
 	SECOND(100),
 	THIRD(500),
@@ -11,4 +11,9 @@ public enum ChatFrequencyUpdateEnum {
 		
 		this.value = value;
 	}
+	@Override
+	public String getStringValue() {
+		return Integer.toString(value);
+	}
+	
 }
