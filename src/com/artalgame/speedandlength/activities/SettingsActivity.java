@@ -1,14 +1,16 @@
 package com.artalgame.speedandlength.activities;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 import com.artalgame.speedandlength.R;
-import com.artalgame.speedandlength.CommonComponents.ChatFrequencyUpdateEnum;
-import com.artalgame.speedandlength.CommonComponents.DataFrequencyUpdateEnum;
-import com.artalgame.speedandlength.CommonComponents.DistanceMeasureEnum;
 import com.artalgame.speedandlength.CommonComponents.ISettingsExListData;
 import com.artalgame.speedandlength.CommonComponents.SALSettings;
-import com.artalgame.speedandlength.CommonComponents.SpeedMeasureEnum;
+import com.artalgame.speedandlength.CommonComponents.Frequency.ChartFrequencyUpdateValues;
+import com.artalgame.speedandlength.CommonComponents.Frequency.DataFrequencyUpdateValues;
+import com.artalgame.speedandlength.CommonComponents.Frequency.FrequencyUpdateValue;
+import com.artalgame.speedandlength.CommonComponents.Measure.DistanceMeasureValues;
+import com.artalgame.speedandlength.CommonComponents.Measure.SpeedMeasureValues;
 import com.artalgame.speedandlength.application.SpeedAndLengthApplication;
 import com.artalgame.speedandlength.vidgets.SettingsExpandableListAdapter;
 import com.artalgame.speedandlength.vidgets.SettingsExpandableListChild;
@@ -32,9 +34,9 @@ public class SettingsActivity extends Activity {
 	private ExpandableListView defaultSpeedMeasureExpandableListView;
 	private ExpandableListView defaultDistanceMeasureExpandableListView;
 	private ExpandableListView frequencyDataUpdateExpandableListView;
-	private ExpandableListView frequencyChatUpdateExpandableListView;
+	private ExpandableListView frequencyChartUpdateExpandableListView;
 	
-	private SettingsExpandableListAdapter frequencyChatUpdateAdapter;
+	private SettingsExpandableListAdapter frequencyChartUpdateAdapter;
 	private SettingsExpandableListAdapter frequencyDataUpdateAdapter;
 	private SettingsExpandableListAdapter speedMeasureExpandableListAdapter;
 	private SettingsExpandableListAdapter distanceMeasureExpandableListAdapter;
@@ -52,40 +54,48 @@ public class SettingsActivity extends Activity {
 		setSpeedMeasureExListView();
 		setDistanceMeasureExListView();
 		setFrequencyDataUpdataExListView();
-		setFrequencyChatUpdateExListView();
+		setFrequencyChartUpdateExListView();
 	}
 
-	private void setFrequencyChatUpdateExListView() {
+	private void setFrequencyChartUpdateExListView() {
 		
-		frequencyChatUpdateExpandableListView = (ExpandableListView)findViewById(R.id.frequencyChatUpdateExpandableListView);
-		if(frequencyChatUpdateExpandableListView != null){
-			frequencyChatUpdateAdapter = getFrequencyChatUpdateExListAdapter();
-			frequencyChatUpdateExpandableListView.setAdapter(frequencyChatUpdateAdapter);
-			frequencyChatUpdateExpandableListView.setOnChildClickListener(new OnChildClickListener() {
+		frequencyChartUpdateExpandableListView = (ExpandableListView)findViewById(R.id.frequencyChartUpdateExpandableListView);
+		if(frequencyChartUpdateExpandableListView != null){
+			frequencyChartUpdateAdapter = getFrequencyChartUpdateExListAdapter();
+			frequencyChartUpdateExpandableListView.setAdapter(frequencyChartUpdateAdapter);
+			frequencyChartUpdateExpandableListView.setOnChildClickListener(new OnChildClickListener() {
 				
 				@Override
 				public boolean onChildClick(ExpandableListView parent, View v,
 						int groupPosition, int childPosition, long id) {
 					
-					SettingsExpandableListAdapter adapter = frequencyChatUpdateAdapter;
+					SettingsExpandableListAdapter adapter = frequencyChartUpdateAdapter;
 					SettingsExpandableListChild child = (SettingsExpandableListChild)adapter.getChild(groupPosition, childPosition);
 					String name = child.getName();
 					SettingsExpandableListGroup group = (SettingsExpandableListGroup)adapter.getGroup(groupPosition);
-					group.setName(name);
-					SpeedAndLengthApplication.settings.setChatUpdateFrequency(name);
-					frequencyChatUpdateExpandableListView.collapseGroup(groupPosition);
+					group.setName(getFrequencyChartUpdateExListGroupName(childPosition));
+					SpeedAndLengthApplication.settings.setChartUpdateFrequency(name);
+					SpeedAndLengthApplication.settings.setChartUpdateFrequencyIndex(childPosition);
+					frequencyChartUpdateExpandableListView.collapseGroup(groupPosition);
 					adapter.notifyDataSetChanged();
 					return false;
-				}
+				}			
 			});
 		}
 	}
-
-	private SettingsExpandableListAdapter getFrequencyChatUpdateExListAdapter() {
+	
+	private String getFrequencyChartUpdateExListGroupName(
+			int childPosition) {
 		
-    	SettingsExpandableListAdapter adapter = getAdapter(ChatFrequencyUpdateEnum.values());
-    	//set name of group from settings
-    	((SettingsExpandableListGroup)adapter.getGroup(0)).setName(SpeedAndLengthApplication.settings.getChatUpdateFrequency());
+		return new ChartFrequencyUpdateValues().getStringValues().get(childPosition);
+	}
+
+	private SettingsExpandableListAdapter getFrequencyChartUpdateExListAdapter() {
+		
+		ArrayList<String> values = new ChartFrequencyUpdateValues().getStringValues();
+    	SettingsExpandableListAdapter adapter = getAdapter(values.toArray(new String[0]));
+    	int index = SpeedAndLengthApplication.settings.getChartUpdateFrequencyIndex();
+    	((SettingsExpandableListGroup)adapter.getGroup(0)).setName(getFrequencyChartUpdateExListGroupName(index));
     	return adapter;
 	}
 	
@@ -102,19 +112,31 @@ public class SettingsActivity extends Activity {
 						int groupPosition, int childPosition, long id) {
 					
 					SettingsExpandableListAdapter adapter = frequencyDataUpdateAdapter;
-					String name = DoCommonActionsWhenExListElementClicked(adapter, groupPosition, childPosition);
+					SettingsExpandableListChild child = (SettingsExpandableListChild)adapter.getChild(groupPosition, childPosition);
+					String name = child.getName();
+					SettingsExpandableListGroup group = (SettingsExpandableListGroup)adapter.getGroup(groupPosition);
+					group.setName(getFrequencyDataUpdateExListGroupName(childPosition));
 					SpeedAndLengthApplication.settings.setDataUpdateFrequency(name);
+					SpeedAndLengthApplication.settings.setDataUpdateFrequencyIndex(childPosition);
 					frequencyDataUpdateExpandableListView.collapseGroup(groupPosition);
+					adapter.notifyDataSetChanged();
 					return false;
 				}
 			});
 		}
 	}
+	
+	private String getFrequencyDataUpdateExListGroupName(
+			int childPosition) {
+		
+		return new DataFrequencyUpdateValues().getStringValues().get(childPosition);
+	}
 
 	private SettingsExpandableListAdapter getFrequencyDataUpdateExListAdapter() {
-		SettingsExpandableListAdapter adapter = getAdapter(DataFrequencyUpdateEnum.values());
-    	//set name of group from settings
-    	((SettingsExpandableListGroup)adapter.getGroup(0)).setName(SpeedAndLengthApplication.settings.getDataUpdateFrequency());
+		ArrayList<String> values = new DataFrequencyUpdateValues().getStringValues();
+		SettingsExpandableListAdapter adapter = getAdapter(values.toArray(new String[0]));
+		int index = SpeedAndLengthApplication.settings.getDataUpdateFrequencyIndex();
+    	((SettingsExpandableListGroup)adapter.getGroup(0)).setName(getFrequencyDataUpdateExListGroupName(index));
     	return adapter;
 	}
 	
@@ -131,20 +153,30 @@ public class SettingsActivity extends Activity {
 						int groupPosition, int childPosition, long id) {
 					
 					SettingsExpandableListAdapter adapter = distanceMeasureExpandableListAdapter;
-					String name = DoCommonActionsWhenExListElementClicked(adapter, groupPosition, childPosition);
+					SettingsExpandableListChild child = (SettingsExpandableListChild)adapter.getChild(groupPosition, childPosition);
+					String name = child.getName();
+					SettingsExpandableListGroup group = (SettingsExpandableListGroup)adapter.getGroup(groupPosition);
+					group.setName(getDistanceMeasureExListGroupName(childPosition));
 					SpeedAndLengthApplication.settings.setDistanceMeasure(name);
+					SpeedAndLengthApplication.settings.setDistanceMeasureIndex(childPosition);
 					defaultDistanceMeasureExpandableListView.collapseGroup(groupPosition);
+					adapter.notifyDataSetChanged();
 					return false;
 				}
 			});
 		}
 	}
-
+	
+	private String getDistanceMeasureExListGroupName(
+			int childPosition) {
+		return new DistanceMeasureValues().getValues().get(childPosition);
+	}
+	
 	private SettingsExpandableListAdapter getDistanceMeasureExListAdapter() {
-		
-		SettingsExpandableListAdapter adapter = getAdapter(DistanceMeasureEnum.values());
-    	//set name of group from settings
-    	((SettingsExpandableListGroup)adapter.getGroup(0)).setName(SpeedAndLengthApplication.settings.getDistanceMeasure());
+		ArrayList<String> values = new DistanceMeasureValues().getValues();
+		SettingsExpandableListAdapter adapter = getAdapter(values.toArray(new String[0]));
+		int index = SpeedAndLengthApplication.settings.getDistanceMeasureIndex();
+    	((SettingsExpandableListGroup)adapter.getGroup(0)).setName(getDistanceMeasureExListGroupName(index));
     	return adapter;
 	}
 
@@ -161,45 +193,44 @@ public class SettingsActivity extends Activity {
 						int groupPosition, int childPosition, long id) {
 					
 					SettingsExpandableListAdapter adapter = speedMeasureExpandableListAdapter;
-					String name = DoCommonActionsWhenExListElementClicked(adapter, groupPosition, childPosition);
+					SettingsExpandableListChild child = (SettingsExpandableListChild)adapter.getChild(groupPosition, childPosition);
+					String name = child.getName();
+					SettingsExpandableListGroup group = (SettingsExpandableListGroup)adapter.getGroup(groupPosition);
+					group.setName(getSpeedMeasureExListGroupName(childPosition));
 					SpeedAndLengthApplication.settings.setSpeedMeasure(name);
+					SpeedAndLengthApplication.settings.setSpeedMeasureIndex(childPosition);
 					defaultSpeedMeasureExpandableListView.collapseGroup(groupPosition);
+					adapter.notifyDataSetChanged();
 					return false;
 				}
 			});
 		}
 	}
+	
+	private String getSpeedMeasureExListGroupName(int childPosition) {
+		return new SpeedMeasureValues().getValues().get(childPosition);
+	}
+
 	private SettingsExpandableListAdapter getSpeedMeasureExListAdapter() {
-		SettingsExpandableListAdapter adapter = getAdapter(SpeedMeasureEnum.values());
+		ArrayList<String> values = new SpeedMeasureValues().getValues();
+		SettingsExpandableListAdapter adapter = getAdapter(values.toArray(new String[0]));
     	//set name of group from settings
-    	((SettingsExpandableListGroup)adapter.getGroup(0)).setName(SpeedAndLengthApplication.settings.getSpeedMeasure());
+		int index = SpeedAndLengthApplication.settings.getSpeedMeasureIndex();
+    	((SettingsExpandableListGroup)adapter.getGroup(0)).setName(getSpeedMeasureExListGroupName(index));
     	return adapter;
 	}
 
-	//Return name of clicked element
-	private String DoCommonActionsWhenExListElementClicked(SettingsExpandableListAdapter adapter, int groupPosition, int childPosition)
-	{
-		SettingsExpandableListChild child = (SettingsExpandableListChild)adapter.getChild(groupPosition, childPosition);
-		String name = child.getName();
-		SettingsExpandableListGroup group = (SettingsExpandableListGroup)adapter.getGroup(groupPosition);
-		group.setName(name);
-		adapter.notifyDataSetChanged();
-		return name;
-	}
-	
-	private SettingsExpandableListAdapter getAdapter(ISettingsExListData[] dataList)
+	private SettingsExpandableListAdapter getAdapter(String[] dataList)
 	{
 		
 		ArrayList<SettingsExpandableListGroup> groupList = new ArrayList<SettingsExpandableListGroup>();
     	ArrayList<SettingsExpandableListChild> childList = new ArrayList<SettingsExpandableListChild>();
     	//Set values from dataList to group's children
         SettingsExpandableListGroup mainGroup = new SettingsExpandableListGroup();
-        //set group name like first element in dataList
-        mainGroup.setName(dataList[0].getStringValue());
         for(int i = 0; i < dataList.length; i++ )
         {
         	SettingsExpandableListChild ch = new SettingsExpandableListChild();
-            ch.setName(dataList[i].getStringValue());
+            ch.setName(dataList[i]);
             ch.setTag(null);
             childList.add(ch);
         }

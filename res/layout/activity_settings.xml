@@ -34,7 +34,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <ExpandableListView
-        android:id="@+id/frequencyChatUpdateExpandableListView"
+        android:id="@+id/frequencyChartUpdateExpandableListView"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right" >

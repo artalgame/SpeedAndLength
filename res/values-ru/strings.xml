@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpeedAndLength</string>
+    <string name="action_settings">Настройки</string>
+    <string name="hello_world">Привет, мир!</string>
+    <string name="cardinal_north">С</string>
+    <string name="cardinal_east">В</string>
+    <string name="cardinal_south">Ю</string>
+    <string name="cardinal_west">З</string>
+    <string name="save_button">Сохранить</string>
+    <string name="large_text">Большой текст</string>
+    <string name="small_text">Маленький текст</string>
+    
+    <!-- Speed Measure Enum -->
+    <string name="speed_measure_enum_0">км/ч</string>
+    <string name="speed_measure_enum_1">м/с</string>
+    
+    <!-- Distance Measure Enum -->
+    <string name="distance_measure_enum_0">км</string>
+    <string	name="distance_measure_enum_1">м</string>
+    
+    <!-- Update Frequency Measure-->
+    <string name="update_frequency_0">мс</string>
+    <string name="update_frequency_1">с</string>
+</resources>

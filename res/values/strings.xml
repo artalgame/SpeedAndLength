@@ -12,4 +12,62 @@
     <string name="large_text">Large Text</string>
     <string name="small_text">Small Text</string>
 
+    <!-- Speed Measure Enum -->
+    	<string name="speed_measure_enum_0">km/h</string>
+    	<string name="speed_measure_enum_1">m/s</string>
+    <!-- Speed Measure Standart -->
+    	<string name="speed_measure_enum_as_standart">1</string>
+    <!-- Speed koeficients regarding standart(the value of speed should be multiplay on coef) -->
+    	<string name="speed_koef_0">3.6</string>
+    	<string name="speed_koef_1">1</string>
+    
+    
+    <!-- Distance Measure Enum -->
+    	<string name="distance_measure_enum_0">km</string>
+    	<string	name="distance_measure_enum_1">m</string>
+    <!-- Distance Measure Standart -->
+    	<string name="distance_measure_enum_as_standart">1</string>
+    <!-- distance koeficients regarding standart(the value of distance should be multiplay on coef) -->
+    	<string name="distance_koef_0">0.001</string>
+    	<string name="distance_koef_1">1</string>
+    	
+    
+    <!-- Update Frequency Measure-->
+    	<string name="update_frequency_enum_0">ms</string>
+    	<string name="update_frequency_enum_1">s</string>
+    <!-- Update Frequency Standart -->
+    	<string name="update_frequency_enum_as_standart">0</string>
+    <!-- koeficients regarding standart(the value of frequency should be multiplay on coef) -->
+    	<string name="update_frequency_enum_koef_0">1</string>
+    	<string name="update_frequency_enum_koef_1">0.001</string>	
+    	
+    <!-- Chart Frequency Update -->
+    	<string name="chart_frequency_update_0">1000</string>
+    	<string name="chart_frequency_update_display_measure_0">1</string>
+    	
+    	<string name="chart_frequency_update_1">3000</string>
+    	<string name="chart_frequency_update_display_measure_1">1</string>
+    	
+    	<string name="chart_frequency_update_2">5000</string>
+    	<string name="chart_frequency_update_display_measure_2">1</string>
+    	
+    <!-- Data Frequency Update -->
+    	<string name="data_frequency_update_0">100</string>
+    	<string name="data_frequency_update_display_measure_0">0</string>
+    	
+    	<string name="data_frequency_update_1">500</string>
+    	<string name="data_frequency_update_display_measure_1">0</string>
+    	
+    	<string name="data_frequency_update_2">1000</string>
+    	<string name="data_frequency_update_display_measure_2">1</string>
+    	
+    	<string name="data_frequency_update_3">2000</string>
+    	<string name="data_frequency_update_display_measure_3">1</string>
+    	
+    <!-- Default indexes of setting -->
+    <string name="default_speed_measure_index">1</string>
+    <string name="default_distance_measure_index">1</string>
+    <string name="default_data_frequency_update_index">2</string>
+    <string name="default_chart_frequency_update_index">2</string>
+    
 </resources>
