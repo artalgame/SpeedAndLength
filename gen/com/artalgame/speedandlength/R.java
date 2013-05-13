@@ -85,77 +85,79 @@ public final class R {
         public static final int cardinal_west=0x7f060007;
         /**  Chart Frequency Update 
          */
-        public static final int chart_frequency_update_0=0x7f060025;
-        public static final int chart_frequency_update_1=0x7f060027;
-        public static final int chart_frequency_update_2=0x7f060029;
-        public static final int chart_frequency_update_display_measure_0=0x7f060026;
-        public static final int chart_frequency_update_display_measure_1=0x7f060028;
-        public static final int chart_frequency_update_display_measure_2=0x7f06002a;
+        public static final int chart_frequency_update_0=0x7f060027;
+        public static final int chart_frequency_update_1=0x7f060029;
+        public static final int chart_frequency_update_2=0x7f06002b;
+        public static final int chart_frequency_update_display_measure_0=0x7f060028;
+        public static final int chart_frequency_update_display_measure_1=0x7f06002a;
+        public static final int chart_frequency_update_display_measure_2=0x7f06002c;
         public static final int current_distance=0x7f060012;
         public static final int current_speed=0x7f060011;
         /**  Data Frequency Update 
          */
-        public static final int data_frequency_update_0=0x7f06002b;
-        public static final int data_frequency_update_1=0x7f06002d;
-        public static final int data_frequency_update_2=0x7f06002f;
-        public static final int data_frequency_update_3=0x7f060031;
-        public static final int data_frequency_update_display_measure_0=0x7f06002c;
-        public static final int data_frequency_update_display_measure_1=0x7f06002e;
-        public static final int data_frequency_update_display_measure_2=0x7f060030;
-        public static final int data_frequency_update_display_measure_3=0x7f060032;
-        public static final int default_chart_frequency_update_index=0x7f060036;
-        public static final int default_data_frequency_update_index=0x7f060035;
-        public static final int default_distance_measure_index=0x7f060034;
+        public static final int data_frequency_update_0=0x7f06002d;
+        public static final int data_frequency_update_1=0x7f06002f;
+        public static final int data_frequency_update_2=0x7f060031;
+        public static final int data_frequency_update_3=0x7f060033;
+        public static final int data_frequency_update_display_measure_0=0x7f06002e;
+        public static final int data_frequency_update_display_measure_1=0x7f060030;
+        public static final int data_frequency_update_display_measure_2=0x7f060032;
+        public static final int data_frequency_update_display_measure_3=0x7f060034;
+        public static final int default_chart_frequency_update_index=0x7f060038;
+        public static final int default_data_frequency_update_index=0x7f060037;
+        public static final int default_distance_measure_index=0x7f060036;
         /**  Default indexes of setting 
          */
-        public static final int default_speed_measure_index=0x7f060033;
+        public static final int default_speed_measure_index=0x7f060035;
         public static final int distanceMeasurePhrase=0x7f06000e;
         /**  Distance Measure Enum 
  Distance Measure Enum 
          */
-        public static final int distance_measure_enum_0=0x7f06001b;
-        public static final int distance_measure_enum_1=0x7f06001c;
+        public static final int distance_measure_enum_0=0x7f06001d;
+        public static final int distance_measure_enum_1=0x7f06001e;
         /**  Distance Measure Standart 
          */
-        public static final int distance_measure_enum_as_standart=0x7f06001d;
+        public static final int distance_measure_enum_as_standart=0x7f06001f;
         /**  distance koeficients regarding standart(the value of distance should be multiplay on coef) 
          */
-        public static final int distance_measure_enum_koef_0=0x7f06001e;
-        public static final int distance_measure_enum_koef_1=0x7f06001f;
+        public static final int distance_measure_enum_koef_0=0x7f060020;
+        public static final int distance_measure_enum_koef_1=0x7f060021;
         public static final int frequencyChartPhrase=0x7f06000c;
         public static final int frequencyDataPhrase=0x7f06000b;
         public static final int hello_world=0x7f060002;
         public static final int large_text=0x7f060009;
         public static final int pause_button=0x7f060014;
         public static final int play_button=0x7f060013;
+        public static final int powered_by_string=0x7f060017;
         public static final int save_button=0x7f060008;
+        public static final int share_string=0x7f060016;
         public static final int small_text=0x7f06000a;
         public static final int speedMeasurePhrase=0x7f06000d;
         /**  Speed Measure Enum 
  Speed Measure Enum 
          */
-        public static final int speed_measure_enum_0=0x7f060016;
-        public static final int speed_measure_enum_1=0x7f060017;
+        public static final int speed_measure_enum_0=0x7f060018;
+        public static final int speed_measure_enum_1=0x7f060019;
         /**  Speed Measure Standart 
          */
-        public static final int speed_measure_enum_as_standart=0x7f060018;
+        public static final int speed_measure_enum_as_standart=0x7f06001a;
         /**  Speed koeficients regarding standart(the value of speed should be multiplay on coef) 
          */
-        public static final int speed_measure_enum_koef_0=0x7f060019;
-        public static final int speed_measure_enum_koef_1=0x7f06001a;
+        public static final int speed_measure_enum_koef_0=0x7f06001b;
+        public static final int speed_measure_enum_koef_1=0x7f06001c;
         public static final int stop_button=0x7f060015;
         /**  Update Frequency Measure
  Update Frequency Measure
          */
-        public static final int update_frequency_enum_0=0x7f060020;
-        public static final int update_frequency_enum_1=0x7f060021;
+        public static final int update_frequency_enum_0=0x7f060022;
+        public static final int update_frequency_enum_1=0x7f060023;
         /**  Update Frequency Standart 
          */
-        public static final int update_frequency_enum_as_standart=0x7f060022;
+        public static final int update_frequency_enum_as_standart=0x7f060024;
         /**  koeficients regarding standart(the value of frequency should be multiplay on coef) 
          */
-        public static final int update_frequency_enum_koef_0=0x7f060023;
-        public static final int update_frequency_enum_koef_1=0x7f060024;
+        public static final int update_frequency_enum_koef_0=0x7f060025;
+        public static final int update_frequency_enum_koef_1=0x7f060026;
     }
     public static final class style {
         /** 

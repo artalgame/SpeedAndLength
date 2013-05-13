@@ -23,6 +23,8 @@
     <string name="play_button">Start</string>
     <string name="pause_button">Pause</string>
     <string name="stop_button">Stop</string>
+    <string name="share_string">Today I have overcomed </string>
+    <string name="powered_by_string">Calculate by cursovoy for AK</string>
 
     <!-- Speed Measure Enum -->
     	<string name="speed_measure_enum_0">km/h</string>

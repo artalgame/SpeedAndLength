@@ -21,6 +21,8 @@
     <string name="play_button">Старт</string>
     <string name="pause_button">Пауза</string>
     <string name="stop_button">Стоп</string>
+    <string name="share_string">Сегодня я преодолел  </string>
+    <string name="powered_by_string">Подчитано с помощью программы для курсового</string>
     
     <!-- Speed Measure Enum -->
     <string name="speed_measure_enum_0">км/ч</string>

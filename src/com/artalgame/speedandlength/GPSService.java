@@ -37,6 +37,8 @@ public class GPSService extends Service {
 	private Listener gpsListener;
 
 	protected Iterable<GpsSatellite> sats;
+
+	private Criteria criteria;
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
@@ -44,13 +46,7 @@ public class GPSService extends Service {
 			isServiceStarted = true;
 			
 			locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
-			Criteria criteria = getGPSCriteria();
-			
-			bestProvider = locationManager.getBestProvider(criteria, true);
-			locationProvider = locationManager.getProvider(bestProvider);
-			locationListener = getLocationListener(); 
-			locationManager.requestLocationUpdates(bestProvider, minTime, minDistance, locationListener);
-			lastLocation = locationManager.getLastKnownLocation(bestProvider);
+			criteria = getGPSCriteria();
 		}
 		return startId;
 	}
@@ -59,7 +55,7 @@ public class GPSService extends Service {
 	{
 		return sats;
 	}
-private LocationListener  getLocationListener() {
+	private LocationListener  getLocationListener() {
 		return new LocationListener() {
 			
 			@Override
@@ -88,14 +84,6 @@ private LocationListener  getLocationListener() {
 				}
 				GpsStatus status = locationManager.getGpsStatus(null); 
                 sats = status.getSatellites();
-				//alt distance
-				/*Location curLocation = locationManager.getLastKnownLocation(bestProvider);
-				if(lastLocation != null)
-				{
-					double distance = haversine_km(lastLocation.getLatitude(), lastLocation.getLongitude(), curLocation.getLatitude(), curLocation.getLongitude());
-					altDistance.setText(Double.toString(distance));
-				}
-				lastLocation = curLocation;*/
 			}
 			
 		};
@@ -113,12 +101,16 @@ private LocationListener  getLocationListener() {
 	}
 	
 	public void setPlay(boolean isPlay){
-		if(isPlay)
+		if(isPlay && !isPause)
 		{
+			bestProvider = locationManager.getBestProvider(criteria, true);
+			locationProvider = locationManager.getProvider(bestProvider);
+			locationListener = getLocationListener(); 
+			locationManager.requestLocationUpdates(bestProvider, minTime, minDistance, locationListener);
 			lastLocation = locationManager.getLastKnownLocation(bestProvider);
-			setStop(false);
-			setPause(false);
 		}
+		setStop(false);
+		setPause(false);
 		this.isPlay = isPlay;
 	}
 	
@@ -136,7 +128,15 @@ private LocationListener  getLocationListener() {
 	}
 	public void setStop(boolean b) {
 		// TODO Auto-generated method stub
-		
+		if(b)
+		{
+			isPlay = false;
+			isPause = false;
+			isStop = true;
+			currentDistance = 0;
+			currentSpeed = 0;
+			locationManager.removeUpdates(locationListener);
+		}
 	}
 
 	@Override
@@ -152,7 +152,7 @@ private LocationListener  getLocationListener() {
 	}
 
 	private double d2r = Math.PI / 180.0;
-	//calculate haversine distance for linear distance
+
 	private double haversine_km(double lat1, double long1, double lat2, double long2)
 	{
 	    double dlong = (long2 - long1) * d2r;
@@ -170,7 +170,6 @@ private LocationListener  getLocationListener() {
 		// TODO Auto-generated method stub
 		return Double.toString(currentDistance);
 	}
-	
 	public double getCurrentSpeed() {
 		// TODO Auto-generated method stub
 		return currentSpeed;
