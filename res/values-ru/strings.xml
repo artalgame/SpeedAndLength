@@ -10,6 +10,17 @@
     <string name="save_button">Сохранить</string>
     <string name="large_text">Большой текст</string>
     <string name="small_text">Маленький текст</string>
+    <string name="frequencyDataPhrase">Обновлять данные раз в</string>
+    <string name="frequencyChartPhrase">Обновлять график раз в</string>
+    <string name="speedMeasurePhrase">Измерять скорость в</string>
+    <string name="distanceMeasurePhrase">Измерять расстояние в</string>
+    <string name="GPSButtonName">GPS</string>
+    <string name="SettingsButtonName">Настройки</string>
+    <string name="current_speed">Скорость:</string>
+    <string name="current_distance">Расстояние:</string>
+    <string name="play_button">Старт</string>
+    <string name="pause_button">Пауза</string>
+    <string name="stop_button">Стоп</string>
     
     <!-- Speed Measure Enum -->
     <string name="speed_measure_enum_0">км/ч</string>
@@ -20,6 +31,7 @@
     <string	name="distance_measure_enum_1">м</string>
     
     <!-- Update Frequency Measure-->
-    <string name="update_frequency_0">мс</string>
-    <string name="update_frequency_1">с</string>
+    	<string name="update_frequency_enum_0">мс</string>
+    	<string name="update_frequency_enum_1">с</string>
+    	
 </resources>

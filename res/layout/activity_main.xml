@@ -9,88 +9,135 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/titleMainTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/gpsButton"
-        android:layout_toLeftOf="@+id/gpsButton"
-        android:layout_toRightOf="@+id/settingsButton"
-        android:height="@dimen/activity_vertical_margin"
-        android:text="@string/app_name"
-        android:textSize="@dimen/activity_horizontal_margin" />
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/titleMainTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="0.29"
+            android:text="@string/app_name"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/settingsButton"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:gravity="left|center_vertical"
+                android:minHeight="48dp"
+                android:minLines="0"
+                android:singleLine="false"
+                android:text="@string/SettingsButtonName" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/gpsButton"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:scrollHorizontally="true"
+                android:text="@string/GPSButtonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/current_speed"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/currentSpeedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="Current Speed"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/current_distance"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/currentDistanceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Distance"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/gpsButton"
+        android:id="@+id/pauseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="GSP" />
+        android:layout_alignBaseline="@+id/playButton"
+        android:layout_alignBottom="@+id/playButton"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@+id/playButton"
+        android:gravity="left|center"
+        android:text="@string/pause_button" />
 
     <Button
-        android:id="@+id/settingsButton"
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/gpsButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Settings" />
-
-    <TextView
-        android:id="@+id/currentSpeedTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/settingsButton"
-        android:layout_below="@+id/settingsButton"
-        android:layout_marginTop="42dp"
-        android:layout_toLeftOf="@+id/titleMainTextView"
-        android:text="Current Speed" />
-
-    <TextView
-        android:id="@+id/currentDistanceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/currentSpeedTextView"
-        android:layout_below="@+id/currentSpeedMeasureButton"
-        android:layout_marginTop="16dp"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="22dp"
+        android:gravity="left|center"
+        android:text="@string/play_button" />
 
     <Button
-        android:id="@+id/currentSpeedMeasureButton"
-        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/stopButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/currentSpeedTextView"
-        android:layout_toRightOf="@+id/titleMainTextView"
-        android:text="Km\H" />
-
-    <Button
-        android:id="@+id/currentDistanceMeasureButton"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/currentSpeedMeasureButton"
-        android:layout_alignTop="@+id/currentDistanceTextView"
-        android:text="Button" />
-
-    <DigitalClock
-        android:id="@+id/currentTimeDigitalClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="34dp"
-        android:layout_toRightOf="@+id/currentDistanceTextView"
-        android:text="DigitalClock" />
-
-    <TextView
-        android:id="@+id/graphicTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/currentTimeDigitalClock"
-        android:layout_marginTop="29dp"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignBaseline="@+id/pauseButton"
+        android:layout_alignBottom="@+id/pauseButton"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/pauseButton"
+        android:gravity="left|center"
+        android:text="@string/stop_button" />
 
 </RelativeLayout>

@@ -32,14 +32,27 @@ public class SALSettings {
 	private int distanceMeasureIndex;
 	private int dataUpdateFrequencyIndex;
 	private int chartUpdateFrequencyIndex;
+	private DataFrequencyUpdateValues dataFrequencyUpdateValues;
+	private ChartFrequencyUpdateValues chartFrequencyUpdateValues;
+	private SpeedMeasureValues speedMeasureValues;
+	private DistanceMeasureValues distanceMeasureValues;
+	
 	
 	private SharedPreferences sharedPreferences;
 	
 	public SALSettings(SharedPreferences sharedPreferences){
 		this.sharedPreferences = sharedPreferences;
 		loadSettings();
+		InicializeArrays();
 	}
 	
+	private void InicializeArrays() {
+		dataFrequencyUpdateValues = new DataFrequencyUpdateValues();
+		chartFrequencyUpdateValues = new ChartFrequencyUpdateValues();
+		speedMeasureValues = new SpeedMeasureValues();
+		distanceMeasureValues = new DistanceMeasureValues();
+	}
+
 	public String getSpeedMeasure(){
 		return speedMeasure;
 	}
@@ -76,6 +89,9 @@ public class SALSettings {
 	
 	public String getDataUpdateFrequency(){
 		return dataUpdateFrequency;
+	}
+	public long getDataUpdateFrequencyAsLong(){
+		return Long.valueOf(dataFrequencyUpdateValues.getValues().get(dataUpdateFrequencyIndex).getValue());
 	}
 	
 	public void setDataUpdateFrequency(String dataUpdateFrequency){

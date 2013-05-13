@@ -2,80 +2,121 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    
     android:orientation="vertical" >
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:text="@string/large_text"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/action_settings"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/frequencyDataUpdateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="13dp"
-        android:text="@string/small_text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <ExpandableListView
-        android:id="@+id/frequencyDataUpdateExpandableListView"
-        android:layout_width="144dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right" >
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="10dp" >
 
-    </ExpandableListView>
+        <TextView
+            android:id="@+id/frequencyDataUpdateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:text="@string/frequencyDataPhrase"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/frequencyGraphUpdateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="13dp"
-        android:text="@string/small_text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <ExpandableListView
+            android:id="@+id/frequencyDataUpdateExpandableListView"
+            android:layout_width="144dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1" >
 
+        </ExpandableListView>
+    </LinearLayout>
+    
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginBottom="25dp"
+     android:layout_marginTop="25dp" >
+     
+     <TextView
+         android:id="@+id/frequencyGraphUpdateTextView"
+         android:layout_width="wrap_content"
+         android:layout_height="fill_parent"
+         android:layout_weight="2"
+         android:text="@string/frequencyChartPhrase"
+         android:textAppearance="?android:attr/textAppearanceSmall" />
+     
     <ExpandableListView
         android:id="@+id/frequencyChartUpdateExpandableListView"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="right" >
+        android:layout_gravity="right"
+        android:layout_weight="1" />
 
-    </ExpandableListView>
-
+    </LinearLayout>
+    
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginBottom="25dp"
+     android:layout_marginTop="25dp" >
+    
     <TextView
         android:id="@+id/defaultSpeedMeasureTextView"
         android:layout_width="wrap_content"
-        android:layout_height="13dp"
-        android:text="@string/small_text"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:text="@string/speedMeasurePhrase"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <ExpandableListView
         android:id="@+id/defaultSpeedMeasureExpandableListView"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="right" >
+        android:layout_gravity="right"
+        android:layout_weight="1" >
 
     </ExpandableListView>
+</LinearLayout>
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginBottom="4dp"
+     android:layout_marginTop="25dp" >
 
     <TextView
         android:id="@+id/defaultDistanceMeasureTextView"
         android:layout_width="wrap_content"
-        android:layout_height="13dp"
-        android:text="@string/small_text"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:text="@string/distanceMeasurePhrase"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <ExpandableListView
         android:id="@+id/defaultDistanceMeasureExpandableListView"
         android:layout_width="144dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="right" >
+        android:layout_gravity="right|end"
+        android:layout_weight="1" >
 
     </ExpandableListView>
+</LinearLayout>
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/save_button" />
+ <Button
+     android:id="@+id/saveButton"
+     style="@style/AppBaseTheme"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_gravity="center"
+     android:layout_marginTop="1dp"
+     android:text="@string/save_button" />
 
 </LinearLayout>

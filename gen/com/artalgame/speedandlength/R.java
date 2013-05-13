@@ -32,30 +32,35 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int TitleMainActivityTextView=0x7f090001;
-        public static final int action_settings=0x7f090017;
+        public static final int TitleMainActivityTextView=0x7f090002;
+        public static final int action_settings=0x7f09001c;
+        public static final int btn=0x7f09001a;
         public static final int compassView=0x7f090000;
-        public static final int currentDistanceMeasureButton=0x7f090008;
-        public static final int currentDistanceTextView=0x7f090006;
-        public static final int currentSpeedMeasureButton=0x7f090007;
-        public static final int currentSpeedTextView=0x7f090005;
-        public static final int currentTimeDigitalClock=0x7f090009;
-        public static final int defaultDistanceMeasureExpandableListView=0x7f090013;
-        public static final int defaultDistanceMeasureTextView=0x7f090012;
-        public static final int defaultSpeedMeasureExpandableListView=0x7f090011;
-        public static final int defaultSpeedMeasureTextView=0x7f090010;
-        public static final int frequencyChartUpdateExpandableListView=0x7f09000f;
-        public static final int frequencyDataUpdateExpandableListView=0x7f09000d;
-        public static final int frequencyDataUpdateTextView=0x7f09000c;
-        public static final int frequencyGraphUpdateTextView=0x7f09000e;
-        public static final int gpsButton=0x7f090003;
-        public static final int graphicTitleTextView=0x7f09000a;
-        public static final int saveButton=0x7f090014;
-        public static final int settingsButton=0x7f090004;
-        public static final int titleMainTextView=0x7f090002;
-        public static final int titleTextView=0x7f09000b;
-        public static final int tvChild=0x7f090015;
-        public static final int tvGroup=0x7f090016;
+        public static final int currentDistanceTextView=0x7f09000a;
+        public static final int currentSpeedTextView=0x7f090008;
+        public static final int defaultDistanceMeasureExpandableListView=0x7f090016;
+        public static final int defaultDistanceMeasureTextView=0x7f090015;
+        public static final int defaultSpeedMeasureExpandableListView=0x7f090014;
+        public static final int defaultSpeedMeasureTextView=0x7f090013;
+        public static final int frequencyChartUpdateExpandableListView=0x7f090012;
+        public static final int frequencyDataUpdateExpandableListView=0x7f090010;
+        public static final int frequencyDataUpdateTextView=0x7f09000f;
+        public static final int frequencyGraphUpdateTextView=0x7f090011;
+        public static final int gpsButton=0x7f090006;
+        public static final int linearLayout1=0x7f090003;
+        public static final int pauseButton=0x7f09000b;
+        public static final int playButton=0x7f09000c;
+        public static final int satsTextView=0x7f090001;
+        public static final int saveButton=0x7f090017;
+        public static final int settingsButton=0x7f090005;
+        public static final int stopButton=0x7f09000d;
+        public static final int textView1=0x7f090007;
+        public static final int textView2=0x7f090009;
+        public static final int titleMainTextView=0x7f090004;
+        public static final int titleTextView=0x7f09000e;
+        public static final int tvChild=0x7f090018;
+        public static final int tvGroup=0x7f090019;
+        public static final int txt=0x7f09001b;
     }
     public static final class layout {
         public static final int activity_gps_parameters=0x7f030000;
@@ -63,84 +68,94 @@ public final class R {
         public static final int activity_settings=0x7f030002;
         public static final int settings_expandablelist_child_item=0x7f030003;
         public static final int settings_expandablelist_group_item=0x7f030004;
+        public static final int test_activity=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f080000;
     }
     public static final class string {
+        public static final int GPSButtonName=0x7f06000f;
+        public static final int GPSService=0x7f060003;
+        public static final int SettingsButtonName=0x7f060010;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int cardinal_east=0x7f060004;
-        public static final int cardinal_north=0x7f060003;
-        public static final int cardinal_south=0x7f060005;
-        public static final int cardinal_west=0x7f060006;
+        public static final int cardinal_east=0x7f060005;
+        public static final int cardinal_north=0x7f060004;
+        public static final int cardinal_south=0x7f060006;
+        public static final int cardinal_west=0x7f060007;
         /**  Chart Frequency Update 
          */
-        public static final int chart_frequency_update_0=0x7f060019;
-        public static final int chart_frequency_update_1=0x7f06001b;
-        public static final int chart_frequency_update_2=0x7f06001d;
-        public static final int chart_frequency_update_display_measure_0=0x7f06001a;
-        public static final int chart_frequency_update_display_measure_1=0x7f06001c;
-        public static final int chart_frequency_update_display_measure_2=0x7f06001e;
+        public static final int chart_frequency_update_0=0x7f060025;
+        public static final int chart_frequency_update_1=0x7f060027;
+        public static final int chart_frequency_update_2=0x7f060029;
+        public static final int chart_frequency_update_display_measure_0=0x7f060026;
+        public static final int chart_frequency_update_display_measure_1=0x7f060028;
+        public static final int chart_frequency_update_display_measure_2=0x7f06002a;
+        public static final int current_distance=0x7f060012;
+        public static final int current_speed=0x7f060011;
         /**  Data Frequency Update 
          */
-        public static final int data_frequency_update_0=0x7f06001f;
-        public static final int data_frequency_update_1=0x7f060021;
-        public static final int data_frequency_update_2=0x7f060023;
-        public static final int data_frequency_update_3=0x7f060025;
-        public static final int data_frequency_update_display_measure_0=0x7f060020;
-        public static final int data_frequency_update_display_measure_1=0x7f060022;
-        public static final int data_frequency_update_display_measure_2=0x7f060024;
-        public static final int data_frequency_update_display_measure_3=0x7f060026;
-        public static final int default_chart_frequency_update_index=0x7f06002a;
-        public static final int default_data_frequency_update_index=0x7f060029;
-        public static final int default_distance_measure_index=0x7f060028;
+        public static final int data_frequency_update_0=0x7f06002b;
+        public static final int data_frequency_update_1=0x7f06002d;
+        public static final int data_frequency_update_2=0x7f06002f;
+        public static final int data_frequency_update_3=0x7f060031;
+        public static final int data_frequency_update_display_measure_0=0x7f06002c;
+        public static final int data_frequency_update_display_measure_1=0x7f06002e;
+        public static final int data_frequency_update_display_measure_2=0x7f060030;
+        public static final int data_frequency_update_display_measure_3=0x7f060032;
+        public static final int default_chart_frequency_update_index=0x7f060036;
+        public static final int default_data_frequency_update_index=0x7f060035;
+        public static final int default_distance_measure_index=0x7f060034;
         /**  Default indexes of setting 
          */
-        public static final int default_speed_measure_index=0x7f060027;
-        /**  distance koeficients regarding standart(the value of distance should be multiplay on coef) 
-         */
-        public static final int distance_koef_0=0x7f060012;
-        public static final int distance_koef_1=0x7f060013;
+        public static final int default_speed_measure_index=0x7f060033;
+        public static final int distanceMeasurePhrase=0x7f06000e;
         /**  Distance Measure Enum 
  Distance Measure Enum 
          */
-        public static final int distance_measure_enum_0=0x7f06000f;
-        public static final int distance_measure_enum_1=0x7f060010;
+        public static final int distance_measure_enum_0=0x7f06001b;
+        public static final int distance_measure_enum_1=0x7f06001c;
         /**  Distance Measure Standart 
          */
-        public static final int distance_measure_enum_as_standart=0x7f060011;
-        public static final int hello_world=0x7f060002;
-        public static final int large_text=0x7f060008;
-        public static final int save_button=0x7f060007;
-        public static final int small_text=0x7f060009;
-        /**  Speed koeficients regarding standart(the value of speed should be multiplay on coef) 
+        public static final int distance_measure_enum_as_standart=0x7f06001d;
+        /**  distance koeficients regarding standart(the value of distance should be multiplay on coef) 
          */
-        public static final int speed_koef_0=0x7f06000d;
-        public static final int speed_koef_1=0x7f06000e;
+        public static final int distance_measure_enum_koef_0=0x7f06001e;
+        public static final int distance_measure_enum_koef_1=0x7f06001f;
+        public static final int frequencyChartPhrase=0x7f06000c;
+        public static final int frequencyDataPhrase=0x7f06000b;
+        public static final int hello_world=0x7f060002;
+        public static final int large_text=0x7f060009;
+        public static final int pause_button=0x7f060014;
+        public static final int play_button=0x7f060013;
+        public static final int save_button=0x7f060008;
+        public static final int small_text=0x7f06000a;
+        public static final int speedMeasurePhrase=0x7f06000d;
         /**  Speed Measure Enum 
  Speed Measure Enum 
          */
-        public static final int speed_measure_enum_0=0x7f06000a;
-        public static final int speed_measure_enum_1=0x7f06000b;
+        public static final int speed_measure_enum_0=0x7f060016;
+        public static final int speed_measure_enum_1=0x7f060017;
         /**  Speed Measure Standart 
          */
-        public static final int speed_measure_enum_as_standart=0x7f06000c;
-        /**  Update Frequency Measure
+        public static final int speed_measure_enum_as_standart=0x7f060018;
+        /**  Speed koeficients regarding standart(the value of speed should be multiplay on coef) 
          */
-        public static final int update_frequency_0=0x7f06002b;
-        public static final int update_frequency_1=0x7f06002c;
+        public static final int speed_measure_enum_koef_0=0x7f060019;
+        public static final int speed_measure_enum_koef_1=0x7f06001a;
+        public static final int stop_button=0x7f060015;
         /**  Update Frequency Measure
+ Update Frequency Measure
          */
-        public static final int update_frequency_enum_0=0x7f060014;
-        public static final int update_frequency_enum_1=0x7f060015;
+        public static final int update_frequency_enum_0=0x7f060020;
+        public static final int update_frequency_enum_1=0x7f060021;
         /**  Update Frequency Standart 
          */
-        public static final int update_frequency_enum_as_standart=0x7f060016;
+        public static final int update_frequency_enum_as_standart=0x7f060022;
         /**  koeficients regarding standart(the value of frequency should be multiplay on coef) 
          */
-        public static final int update_frequency_enum_koef_0=0x7f060017;
-        public static final int update_frequency_enum_koef_1=0x7f060018;
+        public static final int update_frequency_enum_koef_0=0x7f060023;
+        public static final int update_frequency_enum_koef_1=0x7f060024;
     }
     public static final class style {
         /** 
