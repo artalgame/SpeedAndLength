@@ -1,5 +1,5 @@
 package com.artalgame.speedandlength.application;
-import com.artalgame.speedandlength.GPSService;
+import com.artalgame.speedandlength.services.GPSService;
 import com.artalgame.speedandlength.CommonComponents.SALSettings;
 
 import android.app.Application;

@@ -2,7 +2,7 @@ package com.artalgame.speedandlength.activities;
 
 import java.util.Iterator;
 
-import com.artalgame.speedandlength.GPSService;
+import com.artalgame.speedandlength.services.GPSService;
 import com.artalgame.speedandlength.R;
 import com.artalgame.speedandlength.application.SpeedAndLengthApplication;
 
@@ -19,7 +19,6 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.widget.TextView;
 
-
 public class GPSActivity extends Activity {
 	private GpsStatus.Listener gpsListener;
 	private LocationManager locationManager;
@@ -27,34 +26,38 @@ public class GPSActivity extends Activity {
 	private ServiceConnection gpsServiceConnection;
 	protected GPSService gpsServiceBinder;
 	private Handler updateDataHandler;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gps_parameters);
-		satsTextView = (TextView)findViewById(R.id.satsTextView);
-		locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		satsTextView = (TextView) findViewById(R.id.satsTextView);
 		setConnectionWithService();
 		setDataUpdateHandler();
 	}
-	
+
 	private void setDataUpdateHandler() {
 		updateDataHandler = new Handler();
 		updateDataHandler.postDelayed(getUpdateDataHandlerTask(), 1000);
 	}
-	private Runnable getUpdateDataHandlerTask(){
+
+	private Runnable getUpdateDataHandlerTask() {
 		return new Runnable() {
-			
+
 			@Override
 			public void run() {
-				if(gpsServiceBinder != null){
-					drawStatus(gpsServiceBinder.getSatelites());
+				if (gpsServiceBinder != null) {
+				drawStatus(gpsServiceBinder.getSatelites());
 				}
-				updateDataHandler.postAtTime(this, SystemClock.uptimeMillis() + SpeedAndLengthApplication.settings.getDataUpdateFrequencyAsLong());
+				updateDataHandler.postAtTime(
+						this,
+						SystemClock.uptimeMillis()
+								+ SpeedAndLengthApplication.settings
+										.getDataUpdateFrequencyAsLong());
 			}
 		};
 	}
-	
+
 	private void setConnectionWithService() {
 		gpsServiceConnection = new ServiceConnection() {
 			@Override
@@ -62,29 +65,33 @@ public class GPSActivity extends Activity {
 				// TODO Auto-generated method stub
 				gpsServiceBinder = null;
 			}
-			
+
 			@Override
 			public void onServiceConnected(ComponentName name, IBinder service) {
 				// TODO Auto-generated method stub
-				gpsServiceBinder = ((GPSService.GPSBinder)service).getService();
+				gpsServiceBinder = ((GPSService.GPSBinder) service)
+						.getService();
 			}
 		};
-		bindService(SpeedAndLengthApplication.getInstance().gpsServiceIntent, gpsServiceConnection, Context.BIND_AUTO_CREATE);
-		
+		bindService(SpeedAndLengthApplication.getInstance().gpsServiceIntent,
+				gpsServiceConnection, Context.BIND_AUTO_CREATE);
+
 	}
-	
+
 	private void drawStatus(Iterable<GpsSatellite> sats) {
-		if(sats != null){
+		if (sats != null) {
 			int j = 1;
 			String name = new String();
-			for(Iterator<GpsSatellite> i = sats.iterator(); i.hasNext(); ) {
-				  name += j + ")" +i.next().toString()+ "\n";
-				  j++;
-				}
+			
+			Iterator<GpsSatellite> it = sats.iterator() ; 
+	        while ( it.hasNext() ) 
+	        { 
+	                GpsSatellite sat = (GpsSatellite) it.next() ; 
+	                 name +=j+") " + "SNR:"+sat.getSnr()+"; Azimuth:"+sat.getAzimuth()+"; Elevation:"+sat.getElevation() + "\n";
+	                 j++;
+	        } 
 			satsTextView.setText(name);
-		}
-		else
-		{
+		} else {
 			satsTextView.setText(Long.toString(SystemClock.uptimeMillis()));
 		}
 	}

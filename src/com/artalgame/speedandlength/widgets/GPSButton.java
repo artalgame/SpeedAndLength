@@ -1,8 +1,8 @@
-package com.artalgame.speedandlength.vidgets;
+package com.artalgame.speedandlength.widgets;
+
 
 import com.artalgame.speedandlength.R;
 import com.artalgame.speedandlength.activities.GPSActivity;
-import com.artalgame.speedandlength.activities.SettingsActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-public class SettingsButton implements OnClickListener {
+public class GPSButton implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
@@ -20,11 +20,10 @@ public class SettingsButton implements OnClickListener {
 			TextView caption = (TextView)currentActivity.findViewById(R.id.titleTextView);
 			if(caption != null)
 			{
-				caption.setText("Settings");
+				caption.setText("GPS");
 			}
-			Intent settingsActivityIntent = new Intent(v.getContext(), SettingsActivity.class);
-			v.getContext().startActivity(settingsActivityIntent);
 		}
+			Intent gpsActivityIntent = new Intent(v.getContext(), GPSActivity.class);
+			v.getContext().startActivity(gpsActivityIntent);
 	}
-
 }

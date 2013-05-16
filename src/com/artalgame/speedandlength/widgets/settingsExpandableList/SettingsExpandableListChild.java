@@ -1,4 +1,4 @@
-package com.artalgame.speedandlength.vidgets;
+package com.artalgame.speedandlength.widgets.settingsExpandableList;
 
 public class SettingsExpandableListChild {
 	private String name;

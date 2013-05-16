@@ -4,14 +4,14 @@ import java.util.Currency;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.artalgame.speedandlength.GPSService;
+import com.artalgame.speedandlength.services.GPSService;
 import com.artalgame.speedandlength.R;
 import com.artalgame.speedandlength.CommonComponents.Measure.DistanceMeasureValues;
 import com.artalgame.speedandlength.CommonComponents.Measure.SpeedMeasureValues;
 import com.artalgame.speedandlength.R.layout;
 import com.artalgame.speedandlength.application.SpeedAndLengthApplication;
-import com.artalgame.speedandlength.vidgets.GPSButton;
-import com.artalgame.speedandlength.vidgets.SettingsButton;
+import com.artalgame.speedandlength.widgets.GPSButton;
+import com.artalgame.speedandlength.widgets.SettingsButton;
 
 import android.location.Criteria;
 import android.location.GpsStatus;
@@ -69,12 +69,12 @@ public class MainActivity extends Activity {
 		gpsButton.setOnClickListener(new GPSButton());
 		settingsButton.setOnClickListener(new SettingsButton());
 		
-		setPlayButton();
+		//set connection with service
+		setConnectionWithService();
 		setPauseButton();
 		setStopButton();
+		setPlayButton();
 		
-		//set connection with service
-		setConnectionWithService();		
 		
 		//set data update timer
 		setDataUpdateHandler();	
@@ -83,7 +83,6 @@ public class MainActivity extends Activity {
 	private void setStopButton() {
 		
 			stopButton = (Button)findViewById(R.id.stopButton);
-			stopButton.setEnabled(false);
 			stopButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -91,9 +90,18 @@ public class MainActivity extends Activity {
 					v.setEnabled(false);
 					playButton.setEnabled(true);
 					gpsServiceBinder.setStop(true);
+					setDefaultTextViewValues();
 				}
 			});
 	}
+	protected void setDefaultTextViewValues() {
+		// TODO Auto-generated method stub
+		String defaultSpeed = getString(R.string.default_speed);
+		String defaultDistance = getString(R.string.default_distance);
+		currentDistance.setText(defaultDistance);
+		currentSpeed.setText(defaultSpeed);
+	}
+
 	private void shareResults() {
 		Intent sendIntent = new Intent();
 		sendIntent.setAction(Intent.ACTION_SEND);
@@ -129,28 +137,33 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void run() {
-				if(gpsServiceBinder != null){
-					double curDistance = gpsServiceBinder.getCurrentDistance();
-					double curSpeed = gpsServiceBinder.getCurrentSpeed();
-					String curDistanceInString = getStringDistanceUsingSettingMeasure(curDistance);
-					String curSpeedInString = getStringSpeedUsingSettingMeasure(curSpeed);
-					currentDistance.setText(curDistanceInString);
-					currentSpeed.setText(curSpeedInString);
+				if((gpsServiceBinder != null)&&((gpsServiceBinder.isPlay)||(gpsServiceBinder.isPause))){
+					if ((playButton != null) && (playButton.isEnabled()))
+					{
+						setPlayButton();
+					}
+					setSpeedAndDistance();
 				}
 				updateDataHandler.postAtTime(this, SystemClock.uptimeMillis() + SpeedAndLengthApplication.settings.getDataUpdateFrequencyAsLong());
-			}
-
-			
+			}			
 		};
 	}
-	
+	private void setSpeedAndDistance()
+	{
+		double curDistance = gpsServiceBinder.getCurrentDistance();
+		double curSpeed = gpsServiceBinder.getCurrentSpeed();
+		String curDistanceInString = getStringDistanceUsingSettingMeasure(curDistance);
+		String curSpeedInString = getStringSpeedUsingSettingMeasure(curSpeed);
+		currentDistance.setText(curDistanceInString);
+		currentSpeed.setText(curSpeedInString);
+	}
 	private String getStringSpeedUsingSettingMeasure(double curSpeed) {
 		
 		SpeedMeasureValues measureValues = new SpeedMeasureValues();
 		int index = SpeedAndLengthApplication.settings.getSpeedMeasureIndex();
 		double koef = measureValues.getValuesKoefs()[index];
 		String measure = measureValues.getValues().get(index);
-		return (curSpeed * koef) + " " + measure;
+		return Math.round((curSpeed * koef)) + " " + measure;
 	}
 
 	private String getStringDistanceUsingSettingMeasure(double currentDistance) {
@@ -159,18 +172,45 @@ public class MainActivity extends Activity {
 		int index = SpeedAndLengthApplication.settings.getDistanceMeasureIndex();
 		double koef = measureValues.getValuesKoefs()[index];
 		String measure = measureValues.getValues().get(index);
-		return (currentDistance * koef) + " " + measure;
+		return Math.round((currentDistance * koef)) + " " + measure;
 	}
 	private void setPlayButton() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method 
 		playButton = (Button)findViewById(R.id.playButton);
+		//if serrvice has been started before
+		if((gpsServiceBinder != null) && gpsServiceBinder.isPlay)
+		{
+			playButton.setEnabled(false);
+			pauseButton.setEnabled(true);
+			stopButton.setEnabled(true);
+			gpsButton.setEnabled(true);
+		}
+		else
+			if((gpsServiceBinder != null) && gpsServiceBinder.isPause)
+			{
+				playButton.setEnabled(true);
+				pauseButton.setEnabled(false);
+				stopButton.setEnabled(true);
+				gpsButton.setEnabled(false);
+			}
+		else
+		{
+			pauseButton.setEnabled(false);
+			stopButton.setEnabled(false);
+			gpsButton.setEnabled(false);
+		}
 		playButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				gpsServiceBinder.setPlay(true);
-				v.setEnabled(false);
-				stopButton.setEnabled(true);
-				pauseButton.setEnabled(true);
+				if(gpsServiceBinder != null)
+				{
+					gpsServiceBinder.setPlay(true);
+					v.setEnabled(false);
+					stopButton.setEnabled(true);
+					pauseButton.setEnabled(true);
+					gpsButton.setEnabled(true);
+				}
+				
 			}
 		});
 	}

@@ -18,6 +18,8 @@
     <string name="SettingsButtonName">Настройки</string>
     <string name="current_speed">Скорость:</string>
     <string name="current_distance">Расстояние:</string>
+    <string name="default_speed">текущая скорость</string>
+    <string name="default_distance">текущее расстояние</string>
     <string name="play_button">Старт</string>
     <string name="pause_button">Пауза</string>
     <string name="stop_button">Стоп</string>

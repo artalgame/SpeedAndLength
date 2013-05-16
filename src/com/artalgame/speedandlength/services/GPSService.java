@@ -1,4 +1,4 @@
-package com.artalgame.speedandlength;
+package com.artalgame.speedandlength.services;
 
 
 import android.app.Service;
@@ -46,6 +46,18 @@ public class GPSService extends Service {
 			isServiceStarted = true;
 			
 			locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+			gpsListener = new GpsStatus.Listener() {
+				
+				@Override
+				public void onGpsStatusChanged(int event) {
+					// TODO Auto-generated method stub
+					 if( event == GpsStatus.GPS_EVENT_SATELLITE_STATUS){
+			                sats = locationManager.getGpsStatus(null).getSatellites();
+			                
+			            }
+				}
+			};
+			locationManager.addGpsStatusListener(gpsListener);
 			criteria = getGPSCriteria();
 		}
 		return startId;
@@ -83,7 +95,6 @@ public class GPSService extends Service {
 					lastLocation = location;
 				}
 				GpsStatus status = locationManager.getGpsStatus(null); 
-                sats = status.getSatellites();
 			}
 			
 		};
@@ -109,6 +120,11 @@ public class GPSService extends Service {
 			locationManager.requestLocationUpdates(bestProvider, minTime, minDistance, locationListener);
 			lastLocation = locationManager.getLastKnownLocation(bestProvider);
 		}
+		else
+			if(isPause)
+			{
+				locationManager.requestLocationUpdates(bestProvider, minTime, minDistance, locationListener);
+			}
 		setStop(false);
 		setPause(false);
 		this.isPlay = isPlay;
@@ -123,6 +139,7 @@ public class GPSService extends Service {
 		{
 			isPlay = false;
 			isPause = true;
+			locationManager.removeUpdates(locationListener);
 		}
 		
 	}

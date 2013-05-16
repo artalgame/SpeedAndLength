@@ -4,7 +4,6 @@ import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 import com.artalgame.speedandlength.R;
-import com.artalgame.speedandlength.CommonComponents.ISettingsExListData;
 import com.artalgame.speedandlength.CommonComponents.SALSettings;
 import com.artalgame.speedandlength.CommonComponents.Frequency.ChartFrequencyUpdateValues;
 import com.artalgame.speedandlength.CommonComponents.Frequency.DataFrequencyUpdateValues;
@@ -12,9 +11,9 @@ import com.artalgame.speedandlength.CommonComponents.Frequency.FrequencyUpdateVa
 import com.artalgame.speedandlength.CommonComponents.Measure.DistanceMeasureValues;
 import com.artalgame.speedandlength.CommonComponents.Measure.SpeedMeasureValues;
 import com.artalgame.speedandlength.application.SpeedAndLengthApplication;
-import com.artalgame.speedandlength.vidgets.SettingsExpandableListAdapter;
-import com.artalgame.speedandlength.vidgets.SettingsExpandableListChild;
-import com.artalgame.speedandlength.vidgets.SettingsExpandableListGroup;
+import com.artalgame.speedandlength.widgets.settingsExpandableList.SettingsExpandableListAdapter;
+import com.artalgame.speedandlength.widgets.settingsExpandableList.SettingsExpandableListChild;
+import com.artalgame.speedandlength.widgets.settingsExpandableList.SettingsExpandableListGroup;
 
 import android.app.Activity;
 import android.content.Intent;
