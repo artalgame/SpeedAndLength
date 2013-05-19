@@ -110,6 +110,10 @@ public class SALSettings {
 		return chartUpdateFrequency;
 	}
 	
+	public long getChartUpdateFrequencyAsLong(){
+		return Long.valueOf(chartFrequencyUpdateValues.getValues().get(chartUpdateFrequencyIndex).getValue());
+	}
+	
 	public void setChartUpdateFrequency(String chartUpdateFrequency){
 		this.chartUpdateFrequency = chartUpdateFrequency;
 	}

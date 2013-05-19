@@ -33,7 +33,8 @@ public class GPSService extends Service {
 	private Location lastLocation;
 	private float currentSpeed;
 	private float currentDistance;
-
+	private float bearing;
+	
 	private Listener gpsListener;
 
 	protected Iterable<GpsSatellite> sats;
@@ -92,6 +93,7 @@ public class GPSService extends Service {
 					long deltaTime = location.getTime() - lastLocation.getTime();
 					currentSpeed = location.getSpeed();
 					currentDistance += currentSpeed * deltaTime / 1000;
+					bearing = location.bearingTo(lastLocation);
 					lastLocation = location;
 				}
 				GpsStatus status = locationManager.getGpsStatus(null); 
@@ -194,5 +196,10 @@ public class GPSService extends Service {
 	public double getCurrentDistance() {
 		// TODO Auto-generated method stub
 		return currentDistance;
+	}
+
+	public float getBearing() {
+		// TODO Auto-generated method stub
+		return bearing;
 	}
 }

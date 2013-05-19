@@ -3,6 +3,7 @@ package com.artalgame.speedandlength.activities;
 import java.util.Iterator;
 
 import com.artalgame.speedandlength.services.GPSService;
+import com.artalgame.speedandlength.widgets.CompassView;
 import com.artalgame.speedandlength.R;
 import com.artalgame.speedandlength.application.SpeedAndLengthApplication;
 
@@ -26,12 +27,14 @@ public class GPSActivity extends Activity {
 	private ServiceConnection gpsServiceConnection;
 	protected GPSService gpsServiceBinder;
 	private Handler updateDataHandler;
+	private CompassView compassView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gps_parameters);
 		satsTextView = (TextView) findViewById(R.id.satsTextView);
+		compassView = (CompassView)findViewById(R.id.compassView);
 		setConnectionWithService();
 		setDataUpdateHandler();
 	}
@@ -53,7 +56,7 @@ public class GPSActivity extends Activity {
 						this,
 						SystemClock.uptimeMillis()
 								+ SpeedAndLengthApplication.settings
-										.getDataUpdateFrequencyAsLong());
+										.getChartUpdateFrequencyAsLong());
 			}
 		};
 	}
@@ -79,9 +82,12 @@ public class GPSActivity extends Activity {
 	}
 
 	private void drawStatus(Iterable<GpsSatellite> sats) {
+		float bearing = gpsServiceBinder.getBearing();
+		compassView.setBearing(bearing);
+		compassView.refreshDrawableState();
 		if (sats != null) {
 			int j = 1;
-			String name = new String();
+			String name = Float.toString(bearing) + " \n";
 			
 			Iterator<GpsSatellite> it = sats.iterator() ; 
 	        while ( it.hasNext() ) 
